@@ -6,11 +6,13 @@ import java.util.Optional;
 import org.java.expizza.pojo.Pizza;
 import org.java.expizza.repo.PizzaRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PizzaService {
 	
 	@Autowired
-	PizzaRepo pizzaRepo;
+	private PizzaRepo pizzaRepo;
 	
 	public List<Pizza> findAll() {
 		

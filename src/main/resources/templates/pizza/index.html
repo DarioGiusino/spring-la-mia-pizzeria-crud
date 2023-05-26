@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
+	<body>
+		<main style="margin: 50px;">
+			<div th:if="${pizzaList.size() == 0}">
+				Non ci sono pizze qui.
+			</div>
+			
+			<div th:if="${pizzaList.size() > 0}" th:each="pizza : ${pizzaList}" th:object="${pizza}">
+				<h1>[[ *{name} ]]</h1>
+			</div>
+		</main>
+	</body>
+</html>
