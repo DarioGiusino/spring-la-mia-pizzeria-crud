@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PizzaController {
@@ -28,6 +31,7 @@ public class PizzaController {
 	
 	@GetMapping("/pizza/{id}")
 	public String show(@PathVariable("id") Integer id, Model model) {
+		
 		Optional<Pizza> pizzaOpt = pizzaService.findById(id);
 		
 		Pizza pizza = pizzaOpt.get();
@@ -35,5 +39,29 @@ public class PizzaController {
 		model.addAttribute("pizza", pizza);
 		
 		return "pizza/show";
+	}
+	
+	@PostMapping("/pizza/filter")
+	public String filterPizza(Model model, @RequestParam(required = false) String name) {
+		
+		List<Pizza> pizzaList = pizzaService.findByName(name);
+		model.addAttribute("pizzaList", pizzaList);
+		model.addAttribute("name", name);
+		
+		return "pizza/index";
+	}
+	
+	@GetMapping("/pizza/create")
+	public String create() {
+		
+		return "pizza/create";
+	}
+	
+	@PostMapping("/pizza/store")
+	public String store(@ModelAttribute Pizza pizza){
+		
+		pizzaService.save(pizza);
+		
+		return "redirect:/";
 	}
 }

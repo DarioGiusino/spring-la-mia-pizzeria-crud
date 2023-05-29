@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>PizzaJava</title>
+	</head>
+	<body>
+		<main style="margin: 50px;">
+			<h1 style="text-align: center;">Pizzeria (create)</h1>
+			
+			<form th:action="@{/pizza/store}" method="POST">
+				<label for="pizza-name">Nome pizza</label>
+				<input id="pizza-name" type="text" name="name">
+				
+				<br>
+				
+				<label for="pizza-name">Descrizione pizza</label>
+				<textarea id="pizza-name" rows="10" cols="20" name="description"></textarea>
+				
+				<br>
+				
+				<label for="pizza-name">Foto pizza</label>
+				<input id="pizza-name" type="url" name="picture">
+				
+				<br>
+				
+				<label for="pizza-name">Prezzo pizza</label>
+				<input id="pizza-name" type="number" name="price" step="0.01" min="0.01" max="99.99">
+				
+				<br>
+				
+				<button>Crea nuova pizza!</button>
+			</form>
+		</main>
+	</body>
