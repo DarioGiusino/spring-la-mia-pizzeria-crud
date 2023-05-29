@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>PizzaJava</title>
+	</head>
+	<body>
+		<main style="margin: 50px;">
+			<h1 style="text-align: center;">Pizzeria (show)</h1>
+	
+			<section th:object="${pizza}">
+				<h2>[[*{name}]] - prezzo: [[*{price}]] euro</h2>
+				<p>[[*{description}]]</p>
+				<img width="200px" alt="pizza-img" th:src="@{*{picture}}">
+			</section>
+		</main>
+	</body>
+</html>
