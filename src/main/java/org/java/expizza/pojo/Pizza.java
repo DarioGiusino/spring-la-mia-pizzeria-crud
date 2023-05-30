@@ -5,6 +5,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Pizza {
@@ -12,6 +16,8 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotBlank(message = "Please, insert a name.")
+	@Size(min = 3, max = 25, message = "The name must be 3-25 char.")
 	private String name;
 	
 	@Column(columnDefinition="TEXT")
@@ -19,6 +25,8 @@ public class Pizza {
 	
 	private String picture;
 	
+	@NotNull(message = "Please, insert a price.")
+	@Min(value = 1, message = "Min price is 1.")
 	private float price;
 
 	public Pizza() {}

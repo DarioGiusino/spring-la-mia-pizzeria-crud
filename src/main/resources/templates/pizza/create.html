@@ -11,6 +11,9 @@
 			<form th:action="@{/pizza/store}" method="POST">
 				<label for="pizza-name">Nome pizza</label>
 				<input id="pizza-name" type="text" name="name">
+				<label style="color: red" th:if="${errors != null && errors.hasFieldErrors('name')}">
+					[[ ${errors.getFieldError('name').defaultMessage} ]]
+				</label>
 				
 				<br>
 				
@@ -26,6 +29,9 @@
 				
 				<label for="pizza-name">Prezzo pizza</label>
 				<input id="pizza-name" type="number" name="price" step="0.01" min="0.01" max="99.99">
+				<label style="color: red" th:if="${errors != null && errors.hasFieldErrors('price')}">
+					[[ ${errors.getFieldError('price').defaultMessage} ]]
+				</label>
 				
 				<br>
 				
