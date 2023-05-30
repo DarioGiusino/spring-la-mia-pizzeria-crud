@@ -22,6 +22,8 @@
 			
 			<div style="margin-bottom: 10px;" th:if="${pizzaList.size() > 0}" th:each="pizza : ${pizzaList}" th:object="${pizza}">
 				<a th:href="@{/pizza/{id} (id=*{id})}">[[ *{name} ]]</a>
+				<a style="margin-left: 5px;" th:href="@{/pizza/delete/{id} (id=*{id})}">DELETE</a>
+				<a style="margin-left: 5px;" th:href="@{/pizza/edit/{id} (id=*{id})}">EDIT</a>
 			</div>
 		</main>
 	</body>
